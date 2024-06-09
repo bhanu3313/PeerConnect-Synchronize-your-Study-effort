@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeerConnect - Synchronize Your Study Efforts</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>PeerConnect - Synchronize Your Study Efforts</h1>
+    </header>
+
+    <nav class="nav">
+        <a href="#" onclick="showPage('login')">Login</a>
+        <a href="#" onclick="showPage('signup')">Sign Up</a>
+        <a href="#" onclick="showPage('dashboard')">Dashboard</a>
+        <a href="#" onclick="showAbout()"><i class="fas fa-info-circle"></i> About</a>
+        <label class="switch">
+            <input type="checkbox" id="darkModeToggle">
+            <span class="slider"></span>
+        </label>
+    </nav>
+
+    <div class="container" id="login">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </div>
+    
+    <div class="container hidden" id="signup">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="subject">Preferred Subject:</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+                <label for="learningStyle">Learning Style:</label>
+                <input type="text" id="learningStyle" name="learningStyle" required>
+            </div>
+            <div class="form-group">
+                <label for="schedule">Availability:</label>
+                <input type="text" id="schedule" name="schedule" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="container hidden" id="dashboard">
+        <h2>Welcome, Buddy</h2>
+        <h3>Your Study Buddies</h3>
+        <ul id="buddiesList">
+            <!-- List of study buddies will be dynamically added here -->
+        </ul>
+
+        <h3>Join Your Desired Virtual Study Room Based on Your Interest</h3>
+        <div id="studyRooms">
+            <!-- List of available study rooms -->
+            <button onclick="joinStudyRoom('Database Management System')">Join DBMS Room</button>
+            <button onclick="joinStudyRoom('Data Analytics')">Join Data Analytics Room</button>
+            <button onclick="joinStudyRoom('Machine Learning')">Join Machine Learning Room</button>
+            <button onclick="joinStudyRoom('Artificial Intelligence')">Join Artificial Intelligence Room</button>
+            <button onclick="joinStudyRoom('Programming Languages')">Join Programming Languages Room</button>
+        </div>
+
+        <h3>Progress Tracking</h3>
+        <div id="progressTracking">
+            <ul id="progressList">
+                <!-- Progress tracking list will be dynamically added here -->
+            </ul>
+            <button onclick="addProgressItem()">Add Progress Item</button>
+        </div>
+
+        <h3>Study Materials</h3>
+        <div id="studyMaterials">
+            <ul id="materialsList">
+                <!-- Study materials list will be dynamically added here -->
+            </ul>
+            <button onclick="addStudyMaterial()">Add Study Material</button>
+        </div>
+
+        <h3>Time Spent</h3>
+        <div id="timeSpent">
+            <p>Total Time Spent: <span id="totalTime">0</span> minutes</p>
+            <button onclick="startStopTimer()">Start/Stop Timer</button>
+        </div>
+    </div>
+
+    <div class="container hidden" id="studyroom">
+        <h2>Study Room: Math</h2>
+        <div id="videoChat">
+            <!-- Video chat component will be integrated here -->
+            <p>Video chat is not available in this demo.</p>
+        </div>
+        <div id="collaborativeTools">
+            <!-- Collaborative tools like whiteboard, shared notes -->
+            <p>Collaborative tools will be available here.</p>
+        </div>
+    </div>
+    <div class="container hidden" id="dashboard">
+        <h2>Welcome, Buddy</h2>
+        <h3>Your Study Buddies</h3>
+        <ul id="buddiesList">
+            <!-- List of study buddies will be dynamically added here -->
+        </ul>
+    
+        <h3>Join Your Desired Virtual Study Room Based on Your Interest</h3>
+        <div id="studyRooms">
+          
+        <h3>Schedule a Study Session</h3>
+        <div id="scheduleStudySession">
+            <form id="scheduleSessionForm">
+                <div class="form-group">
+                    <label for="sessionDate">Date:</label>
+                    <input type="date" id="sessionDate" name="sessionDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="sessionTime">Time:</label>
+                    <input type="time" id="sessionTime" name="sessionTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="sessionSubject">Subject:</label>
+                    <input type="text" id="sessionSubject" name="sessionSubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="sessionDescription">Description:</label>
+                    <textarea id="sessionDescription" name="sessionDescription" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Schedule</button>
+                </div>
+            </form>
+        </div>
+    
+        <!-- Progress Tracking, Study Materials, Time Spent sections... -->
+    </div>
+    
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="closeAbout()">&times;</span>
+            <h2>About PeerConnect</h2>
+            <p>PeerConnect helps you synchronize your study efforts by connecting you with study buddies and providing virtual study rooms.</p>
+            <h3>How to Access the Site</h3>
+            <ul>
+                <li>Login or Sign Up to create an account.</li>
+                <li>Once logged in, navigate to the Dashboard to see your study buddies and available study rooms.</li>
+                <li>Join a study room of your choice and start collaborating!</li>
+            </ul>
+            <h3>Helpful Resources</h3>
+            <ul>
+                <li><a href="https://www.youtube.com/watch?v=example1" target="_blank">YouTube Guide 1</a></li>
+                <li><a href="https://www.youtube.com/watch?v=example2" target="_blank">YouTube Guide 2</a></li>
+            </ul>
+            <h3>Follow Us</h3>
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-square"></i> Facebook</a><br>
+            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube-square"></i> YouTube</a><br>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram-square"></i> Instagram</a>
+        </div>
+    </div>
+
+    <!-- AI Assistant Button -->
+    <button id="aiAssistantToggle" class="ai-assistant-toggle" onclick="toggleAIAssistant()">AI Assistant</button>
+
+    <!-- AI Assistant Chat Interface -->
+    <div id="aiAssistant" class="ai-assistant hidden">
+        <div class="ai-header">
+            <span>AI Study Assistant</span>
+            <button onclick="toggleAIAssistant()">Close</button>
+        </div>
+        <div class="ai-body">
+            <!-- AI responses will be displayed here -->
+        </div>
+        <div class="ai-footer">
+            <input type="text" id="aiInput" placeholder="Ask a question...">
+            <button onclick="sendAIMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div id="chatWidget" class="chat-widget hidden">
+        <div class="chat-header">
+            <span>Live Chat Support</span>
+            <button onclick="toggleChat()">Close</button>
+        </div>
+        <div class="chat-body">
+            <!-- Chat messages will be here -->
+        </div>
+        <div class="chat-footer">
+            <input type="text" id="chatInput" placeholder="Type a message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <button id="chatToggle" class="chat-toggle" onclick="toggleChat()">Chat</button>
+
+    <script src="script.js"></script>
+</body>
+</html>
